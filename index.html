@@ -1,55 +1,155 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Neonoke — Web Karaoke</title><meta name="theme-color" content="#08070f">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="aurora" aria-hidden="true"></div>
-<header class="top">
-  <div class="logo">neon<span>oke</span></div>
-  <form id="searchForm" class="search" role="search"><input id="q" placeholder="Search a song or artist" autocomplete="off" aria-label="Search songs"><button>Search</button></form>
-  <button id="themeBtn" class="icon" title="Switch theme" aria-label="Switch theme">◐</button>
-</header>
-<main class="layout">
-  <section class="stage-col">
-    <div id="stage" class="stage">
-      <div class="video"><div id="yt"></div>
-        <div class="empty" id="empty"><div class="orb">🎤</div><h2>Pick a song and take the stage</h2><p>Search above or choose a category on the right.</p></div></div>
-      <div class="lyrics" id="lyrics"><canvas id="viz"></canvas><div id="lyLines"><p class="muted">Lyrics show here when a song is playing.</p></div>
-        <div class="sync"><button id="syncM" title="Lyrics earlier">−0.5s</button><span id="syncV">sync 0s</span><button id="syncP" title="Lyrics later">+0.5s</button></div></div>
-      <div class="controls">
-        <div class="seek"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek"><span id="dur">0:00</span></div>
-        <div class="row">
-          <div class="np"><b id="npTitle">Nothing playing</b><small id="npArtist">Queue a song to start</small></div>
-          <div class="btns"><button id="prev" title="Previous (P)">⏮</button><button id="play" class="big" title="Play / pause (Space)">▶</button><button id="next" title="Next (N)">⏭</button><button id="fav" title="Favorite (L)">♡</button></div>
-          <div class="vol"><button id="mute" title="Mute (M)">🔊</button><input type="range" id="vol" min="0" max="100" aria-label="Music volume"><button id="fs" title="Fullscreen (F)">⛶</button></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Birit — Web Videoke</title>
+    <meta name="theme-color" content="#08070f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true"></div>
+    <header class="top">
+      <div class="logo">Birit<span>Web Videoke</span></div>
+      <form id="searchForm" class="search" role="search">
+        <input
+          id="q"
+          placeholder="Search a song or artist"
+          autocomplete="off"
+          aria-label="Search songs"
+        /><button>Search</button>
+      </form>
+      <button
+        id="themeBtn"
+        class="icon"
+        title="Switch theme"
+        aria-label="Switch theme"
+      >
+        ◐
+      </button>
+    </header>
+    <main class="layout">
+      <section class="stage-col">
+        <div id="stage" class="stage">
+          <div class="video">
+            <div id="yt"></div>
+            <div class="empty" id="empty">
+              <div class="orb">🎤</div>
+              <h2>Pick a song and take the stage</h2>
+              <p>Search above or choose a category on the right.</p>
+            </div>
+          </div>
+          <div class="lyrics" id="lyrics">
+            <canvas id="viz"></canvas>
+            <div id="lyLines">
+              <p class="muted">Lyrics show here when a song is playing.</p>
+            </div>
+            <div class="sync">
+              <button id="syncM" title="Lyrics earlier">−0.5s</button
+              ><span id="syncV">sync 0s</span
+              ><button id="syncP" title="Lyrics later">+0.5s</button>
+            </div>
+          </div>
+          <div class="controls">
+            <div class="seek">
+              <span id="cur">0:00</span
+              ><input
+                type="range"
+                id="seek"
+                min="0"
+                max="1000"
+                value="0"
+                aria-label="Seek"
+              /><span id="dur">0:00</span>
+            </div>
+            <div class="row">
+              <div class="np">
+                <b id="npTitle">Nothing playing</b
+                ><small id="npArtist">Queue a song to start</small>
+              </div>
+              <div class="btns">
+                <button id="prev" title="Previous (P)">⏮</button
+                ><button id="play" class="big" title="Play / pause (Space)">
+                  ▶</button
+                ><button id="next" title="Next (N)">⏭</button
+                ><button id="fav" title="Favorite (L)">♡</button>
+              </div>
+              <div class="vol">
+                <button id="mute" title="Mute (M)">🔊</button
+                ><input
+                  type="range"
+                  id="vol"
+                  min="0"
+                  max="100"
+                  aria-label="Music volume"
+                /><button id="fs" title="Fullscreen (F)">⛶</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+      <aside class="panel">
+        <nav class="tabs">
+          <button data-tab="discover" class="on">Discover</button
+          ><button data-tab="queue">Queue <i id="qCount">0</i></button
+          ><button data-tab="favs">Favorites</button
+          ><button data-tab="recent">Recent</button
+          ><button data-tab="studio">Mic studio</button>
+        </nav>
+        <div class="pane" data-tab="discover">
+          <div class="chips" id="chips"></div>
+          <div id="results" class="list"></div>
+        </div>
+        <div class="pane" data-tab="queue" hidden>
+          <div class="bar">
+            <button id="qShuffle">Shuffle</button
+            ><button id="qClear">Clear queue</button>
+          </div>
+          <div id="queueList" class="list"></div>
+        </div>
+        <div class="pane" data-tab="favs" hidden>
+          <div id="favList" class="list"></div>
+        </div>
+        <div class="pane" data-tab="recent" hidden>
+          <div class="bar"><button id="rClear">Clear history</button></div>
+          <div id="recentList" class="list"></div>
+        </div>
+        <div class="pane studio" data-tab="studio" hidden>
+          <button id="micBtn" class="mic">Turn on microphone</button>
+          <p class="hint" id="micHint">
+            Wear headphones. Speakers + mic causes feedback.
+          </p>
+          <div class="fx" id="fxGrid"></div>
+          <label
+            >Effect intensity <input type="range" id="amt" min="0" max="100"
+          /></label>
+          <label
+            >Microphone volume
+            <input type="range" id="micVol" min="0" max="150"
+          /></label>
+          <label
+            >Music volume <input type="range" id="vol2" min="0" max="100"
+          /></label>
+          <label class="check"
+            ><input type="checkbox" id="monitor" /> Hear myself
+            (monitoring)</label
+          >
+          <p class="hint" id="latency"></p>
+        </div>
+      </aside>
+    </main>
+    <div class="mini" id="mini" hidden>
+      <img id="miniImg" alt="" />
+      <div><b id="miniTitle"></b><small id="miniArtist"></small></div>
+      <button id="miniPlay">▶</button><button id="miniNext">⏭</button>
     </div>
-  </section>
-  <aside class="panel">
-    <nav class="tabs"><button data-tab="discover" class="on">Discover</button><button data-tab="queue">Queue <i id="qCount">0</i></button><button data-tab="favs">Favorites</button><button data-tab="recent">Recent</button><button data-tab="studio">Mic studio</button></nav>
-    <div class="pane" data-tab="discover"><div class="chips" id="chips"></div><div id="results" class="list"></div></div>
-    <div class="pane" data-tab="queue" hidden><div class="bar"><button id="qShuffle">Shuffle</button><button id="qClear">Clear queue</button></div><div id="queueList" class="list"></div></div>
-    <div class="pane" data-tab="favs" hidden><div id="favList" class="list"></div></div>
-    <div class="pane" data-tab="recent" hidden><div class="bar"><button id="rClear">Clear history</button></div><div id="recentList" class="list"></div></div>
-    <div class="pane studio" data-tab="studio" hidden>
-      <button id="micBtn" class="mic">Turn on microphone</button>
-      <p class="hint" id="micHint">Wear headphones. Speakers + mic causes feedback.</p>
-      <div class="fx" id="fxGrid"></div>
-      <label>Effect intensity <input type="range" id="amt" min="0" max="100"></label>
-      <label>Microphone volume <input type="range" id="micVol" min="0" max="150"></label>
-      <label>Music volume <input type="range" id="vol2" min="0" max="100"></label>
-      <label class="check"><input type="checkbox" id="monitor"> Hear myself (monitoring)</label>
-      <p class="hint" id="latency"></p>
-    </div>
-  </aside>
-</main>
-<div class="mini" id="mini" hidden><img id="miniImg" alt=""><div><b id="miniTitle"></b><small id="miniArtist"></small></div><button id="miniPlay">▶</button><button id="miniNext">⏭</button></div>
-<div id="toasts" aria-live="polite"></div>
-<script type="module" src="js/app.js"></script>
-</body></html>
+    <div id="toasts" aria-live="polite"></div>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
