@@ -386,7 +386,7 @@ input[type="range"] {
   display: none;
 }
 .pane {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   overflow-y: auto;
   min-height: 0;
   overscroll-behavior: contain;
