@@ -734,9 +734,7 @@ input[type="range"] {
   }
 }
 /* Stop the panel from squeezing the tab bar */
-.tabs{flex:none;min-height:max-content;align-items:center}
-.tabs button{flex:none;line-height:1.2;padding:9px 16px}
-.pane{flex:1 1 0}
+
 /* Mic Studio hidden for now. Delete this line to bring it back. */
 .tabs [data-tab="studio"] {
   display: none;
