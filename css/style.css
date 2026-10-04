@@ -743,3 +743,7 @@ input[type="range"] {
 .tabs [data-tab="studio"] {
   display: none;
 }
+
+.tabs button {
+  margin: 0 0 20px 0;
+}
