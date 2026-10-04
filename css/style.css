@@ -733,12 +733,10 @@ input[type="range"] {
     transition: none !important;
   }
 }
-/* Discover tab rendering fix */
-.panel{isolation:isolate;overflow:hidden;transform:translateZ(0);-webkit-backdrop-filter:blur(20px)}
-.pane{overscroll-behavior:contain;scrollbar-width:thin;border-radius:14px}
-.skel{will-change:background-position}
-.tabs button.on{box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}   /* no outer glow to clip */
-.chips button.on{box-shadow:none}
+/* Stop the panel from squeezing the tab bar */
+.tabs{flex:none;min-height:max-content;align-items:center}
+.tabs button{flex:none;line-height:1.2;padding:9px 16px}
+.pane{flex:1 1 0}
 /* Mic Studio hidden for now. Delete this line to bring it back. */
 .tabs [data-tab="studio"] {
   display: none;
